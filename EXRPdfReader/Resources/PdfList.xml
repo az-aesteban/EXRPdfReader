@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+   <pdfs>
+      <pdf>
+         <name>005_PDF_ChallengeDetails</name>
+         <desc>Exercise for Core Graphics Lesson Part 5</desc>
+         <file-path>005_PDF_ChallengeDetails.pdf</file-path>
+         <seq>2</seq>
+         <pdf-id>9414fdca-5371-11eb-ae93-0242ac130002</pdf-id>
+      </pdf>
+      <pdf>
+         <name>005_PDF_LectureSlides</name>
+         <desc>Lecture Slides for Core Graphics Lesson Part 5</desc>
+         <file-path>005_PDF_LectureSlides.pdf</file-path>
+         <seq>1</seq>
+         <pdf-id>a1fb9a6e-65aa-4767-8e74-7fd656641285</pdf-id>
+      </pdf>
+   </pdfs>
+</response>
