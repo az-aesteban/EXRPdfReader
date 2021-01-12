@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PdfViewController">
             <connections>
-                <outlet property="pdfContentView" destination="BL4-LQ-bCl" id="jDm-GA-Jaq"/>
+                <outlet property="pdfContentView" destination="WNf-jG-cXx" id="HR9-P2-wbj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,16 +18,35 @@
             <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="BL4-LQ-bCl" customClass="PdfContentView">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SN1-KH-a9s">
                     <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <viewLayoutGuide key="safeArea" id="DTM-6l-Ekw"/>
-                </view>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNf-jG-cXx" userLabel="PDF Content View" customClass="PdfContentView">
+                            <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="WNf-jG-cXx" firstAttribute="top" secondItem="SN1-KH-a9s" secondAttribute="top" id="3Ji-iP-gUh"/>
+                        <constraint firstItem="WNf-jG-cXx" firstAttribute="width" secondItem="SN1-KH-a9s" secondAttribute="width" priority="250" id="I1o-xX-qqk"/>
+                        <constraint firstAttribute="bottom" secondItem="WNf-jG-cXx" secondAttribute="bottom" id="MXN-j7-Yad"/>
+                        <constraint firstItem="WNf-jG-cXx" firstAttribute="leading" secondItem="SN1-KH-a9s" secondAttribute="leading" id="UqU-Bh-lDQ"/>
+                        <constraint firstAttribute="trailing" secondItem="WNf-jG-cXx" secondAttribute="trailing" id="Zdc-NP-7Sa"/>
+                        <constraint firstItem="WNf-jG-cXx" firstAttribute="height" secondItem="SN1-KH-a9s" secondAttribute="height" priority="250" id="ccs-c9-tod"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="dor-4P-j7f"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="wlI-G5-XAw"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="139" y="136"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SN1-KH-a9s" secondAttribute="trailing" id="GNr-1X-AvQ"/>
+                <constraint firstItem="SN1-KH-a9s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hIn-pW-xmy"/>
+                <constraint firstItem="SN1-KH-a9s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="im6-Fq-s45"/>
+                <constraint firstAttribute="bottom" secondItem="SN1-KH-a9s" secondAttribute="bottom" id="jcY-Ee-elp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="3bZ-e0-30T"/>
+            <point key="canvasLocation" x="138.84892086330936" y="135.678391959799"/>
         </view>
     </objects>
 </document>
