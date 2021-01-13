@@ -11,16 +11,15 @@
 
 @implementation PdfDataSource
 
-- (PdfDataSource *)initWithPdfMetadata:(PdfMetadata *)metadata {
-    self = [super init];
-    if (self) {
+- (instancetype)initWithPdfMetadata:(PdfMetadata *)metadata {
+    if (self = [super init]) {
         // Create the data model.
         NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:metadata.filePath
                                                 withExtension:nil];
         if (pdfURL) {
             NSLog(@"Loaded PDF file with pdf-id %@", metadata.pdfId);
             self.pdf = CGPDFDocumentCreateWithURL((__bridge CFURLRef) pdfURL);
-            self.numberOfPages = (int)CGPDFDocumentGetNumberOfPages(self.pdf);
+            self.numberOfPages = CGPDFDocumentGetNumberOfPages(self.pdf);
         } else {
             // Missing pdf file, cannot proceed.
             NSLog(@"PdfDataSource: Missing pdf file %@", metadata.filePath);
@@ -35,7 +34,7 @@
     // Create a new view controller and pass suitable data.
     PdfContentViewController *pdfContentViewController = [[PdfContentViewController alloc] initWithNibName:@"PdfContentViewController"
                                                                                                     bundle:[NSBundle mainBundle]];
-    pdfContentViewController.pageNumber = (int)index + 1;
+    pdfContentViewController.pageNumber = [NSNumber numberWithUnsignedLong:index + 1];
     pdfContentViewController.pdf = self.pdf;
     return pdfContentViewController;
 }
@@ -68,9 +67,7 @@
 - (NSUInteger)indexOfViewController:(PdfContentViewController *)viewController {
     // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object;
     // you can therefore use the model object to identify the index.
-    return viewController.pageNumber - 1;
+    return viewController.pageNumber.unsignedLongValue - 1;
 }
-
-
 
 @end

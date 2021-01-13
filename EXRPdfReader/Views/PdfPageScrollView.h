@@ -14,17 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfPageScrollView : UIScrollView <UIScrollViewDelegate>
 
-// Frame of the PDF
-@property (nonatomic) CGRect pageRect;
+@property (strong, nonatomic) PdfSinglePageView *pdfSinglePageView;
 
-// The PdfSinglePageView that is currently front most.
-@property (nonatomic, weak) PdfSinglePageView *pdfSinglePageView;
+@property (assign, nonatomic) CGRect pageRect;
 
-// Current PDF zoom scale.
-@property (nonatomic) CGFloat pdfZoomScale;
+@property (assign, nonatomic) CGFloat pdfZoomScale;
 
 // A reference to the page being drawn, we manage the storage ourselves for the cf type
-@property (nonatomic, assign) CGPDFPageRef pdfPageRef;
+@property (assign, nonatomic) CGPDFPageRef pdfPageRef;
 
 - (void)setPDFPage:(CGPDFPageRef)PDFPage;
 

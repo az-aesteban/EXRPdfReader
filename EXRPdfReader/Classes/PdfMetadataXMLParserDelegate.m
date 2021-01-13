@@ -8,19 +8,20 @@
 
 #import "PdfMetadataXMLParserDelegate.h"
 
-NSString *kPdfElementName = @"pdf";
-NSString *kPdfFileNameElementName = @"name";
-NSString *kPdfFilePathElementName = @"file-path";
-NSString *kPdfSequenceElementName = @"seq";
-NSString *kPdfIdElementName = @"pdf-id";
-NSString *kPdfDescriptionElementName = @"desc";
-
+static NSString *const kPdfElementName = @"pdf";
+static NSString *const kPdfFileNameElementName = @"name";
+static NSString *const kPdfFilePathElementName = @"file-path";
+static NSString *const kPdfSequenceElementName = @"seq";
+static NSString *const kPdfIdElementName = @"pdf-id";
+static NSString *const kPdfDescriptionElementName = @"desc";
 
 @interface PdfMetadataXMLParserDelegate ()
 
-@property (nonatomic, strong) NSString *currentElementName;
-@property (nonatomic, strong) PdfMetadata *parsedPdfMetadata;
-@property (nonatomic, strong) NSMutableString *currentElementValue;
+@property (strong, nonatomic) NSString *currentElementName;
+
+@property (strong, nonatomic) PdfMetadata *parsedPdfMetadata;
+
+@property (strong, nonatomic) NSMutableString *currentElementValue;
 
 @end
 
@@ -33,7 +34,7 @@ NSString *kPdfDescriptionElementName = @"desc";
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-    if ([elementName isEqualToString:kPdfElementName]) {
+    if ([kPdfElementName isEqualToString:elementName]) {
         self.parsedPdfMetadata = [[PdfMetadata alloc] init];
     } else {
         self.currentElementName = elementName;
@@ -42,21 +43,20 @@ NSString *kPdfDescriptionElementName = @"desc";
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-
     if ([elementName isEqualToString:kPdfElementName] && self.parsedPdfMetadata) {
         [self.pdfMetaData addObject:self.parsedPdfMetadata];
     } else {
         NSString *trimmedString = [self.currentElementValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if ([self.currentElementName isEqualToString:kPdfFilePathElementName]) {
+        if ([kPdfFilePathElementName isEqualToString:self.currentElementName]) {
             self.parsedPdfMetadata.filePath = trimmedString;
-        } else if ([self.currentElementName isEqualToString:kPdfFileNameElementName]) {
+        } else if ([kPdfFileNameElementName isEqualToString:self.currentElementName]) {
             self.parsedPdfMetadata.fileName = trimmedString;
-        } else if ([self.currentElementName isEqualToString:kPdfSequenceElementName]) {
+        } else if ([kPdfSequenceElementName isEqualToString:self.currentElementName]) {
             self.parsedPdfMetadata.sequence = [trimmedString intValue];
-        } else if ([self.currentElementName isEqualToString:kPdfIdElementName]) {
+        } else if ([kPdfIdElementName isEqualToString:self.currentElementName]) {
             self.parsedPdfMetadata.pdfId = trimmedString;
-        } else if ([self.currentElementName isEqualToString:kPdfDescriptionElementName]) {
-            self.parsedPdfMetadata.pdfDescription = trimmedString;
+        } else if ([kPdfDescriptionElementName isEqualToString:self.currentElementName]) {
+            self.parsedPdfMetadata.fileDescription = trimmedString;
         }
     }
 }

@@ -15,13 +15,11 @@
     self.delegate = self;
     self.minimumZoomScale = .25;
     self.maximumZoomScale = 5;
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.layer.borderWidth = 5;
+    self.layer.backgroundColor = [UIColor grayColor].CGColor;
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
+    if (self = [super initWithCoder:coder]) {
         [self initialize];
     }
     return self;
@@ -34,6 +32,34 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    // Center the image as it becomes smaller than the size of the screen.
+    CGSize boundsSize = self.bounds.size;
+    CGRect pdfSinglePageViewFrame = self.pdfSinglePageView.frame;
+    // Center horizontally.
+    if (pdfSinglePageViewFrame.size.width < boundsSize.width) {
+        pdfSinglePageViewFrame.origin.x = (boundsSize.width - pdfSinglePageViewFrame.size.width) / 2;
+    } else {
+        pdfSinglePageViewFrame.origin.x = 0;
+    }
+    // Center vertically.
+    if (pdfSinglePageViewFrame.size.height < boundsSize.height) {
+        pdfSinglePageViewFrame.origin.y = (boundsSize.height - pdfSinglePageViewFrame.size.height) / 2;
+    } else {
+        pdfSinglePageViewFrame.origin.y = 0;
+    }
+    self.pdfSinglePageView.frame = pdfSinglePageViewFrame;
+}
+
+#pragma mark - UIScrollView delegate methods
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.pdfSinglePageView;
+}
+
+#pragma mark - PdfPageScrollView methods
+
 - (void)setPDFPage:(CGPDFPageRef)newPDFPage {
     if (newPDFPage) {
         CGPDFPageRetain(newPDFPage);
@@ -41,9 +67,7 @@
     if (self.pdfPageRef) {
         CGPDFPageRelease(self.pdfPageRef);
     }
-
     self.pdfPageRef = newPDFPage;
-
     // pdfPageRef is null if we're requested to draw a padded blank page by the parent UIPageViewController
     if (!self.pdfPageRef) {
         self.pageRect = self.bounds;
@@ -56,60 +80,11 @@
     [self replacePdfPageViewWithFrame:self.pageRect];
 }
 
-#pragma mark - Override layoutSubviews to center content
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    // Center the image as it becomes smaller than the size of the screen.
-    CGSize boundsSize = self.bounds.size;
-    CGRect frameToCenter = self.pdfSinglePageView.frame;
-    
-    // Center horizontally.
-    if (frameToCenter.size.width < boundsSize.width) {
-        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    } else {
-        frameToCenter.origin.x = 0;
-    }
-
-    // Center vertically.
-    if (frameToCenter.size.height < boundsSize.height) {
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    } else {
-        frameToCenter.origin.y = 0;
-    }
-
-    self.pdfSinglePageView.frame = frameToCenter;
-    
-    
-    // To handle the interaction between CATiledLayer and high resolution screens,
-    // set the tiling view's contentScaleFactor to 1.0.
-    // If this step were omitted, the content scale factor would be 2.0 on high resolution screens
-    // which would cause the CATiledLayer to ask for tiles of the wrong scale.
-    self.pdfSinglePageView.contentScaleFactor = 1.0;
-}
-
-#pragma mark - UIScrollView delegate methods
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.pdfSinglePageView;
-}
-
-// A UIScrollView delegate callback, called when the user stops zooming.
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    // Set the new scale factor.
-    self.pdfZoomScale *= scale;
-}
-
 - (void)replacePdfPageViewWithFrame:(CGRect)frame {
-    // Create a new PDF Single Page View at the new scale
-    PdfSinglePageView *newPdfSinglePageView = [[PdfSinglePageView alloc] initWithFrame:frame
-                                                                                 scale:self.pdfZoomScale];
+    PdfSinglePageView *newPdfSinglePageView = [[PdfSinglePageView alloc] initWithFrame:frame];
     [newPdfSinglePageView setPage:self.pdfPageRef];
-    
-    // Add the new PdfSinglePageView to the PDFPageScrollView.
     [self addSubview: newPdfSinglePageView];
     self.pdfSinglePageView = newPdfSinglePageView;
 }
-
 
 @end

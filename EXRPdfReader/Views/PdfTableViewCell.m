@@ -18,9 +18,10 @@
 
 @implementation PdfTableViewCell
 
-- (void)setupCellContentsWithPdf:(PdfMetadata *)pdfMetadata {
-    self.fileNameLabel.text = pdfMetadata.fileName;
-    self.fileDescriptionLabel.text = pdfMetadata.pdfDescription;
+- (void)setupCellContentsWithName:(NSString *)fileName
+                  fileDescription:(NSString *)fileDescription {
+    self.fileNameLabel.text = fileName;
+    self.fileDescriptionLabel.text = fileDescription;
 }
 
 @end

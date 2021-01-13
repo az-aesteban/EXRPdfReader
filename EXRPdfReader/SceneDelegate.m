@@ -12,7 +12,7 @@
 
 @interface SceneDelegate ()
 
-@property(strong, nonatomic) PdfTableViewController *pdfTableViewController;
+@property (strong, nonatomic) PdfTableViewController *pdfTableViewController;
 
 @end
 

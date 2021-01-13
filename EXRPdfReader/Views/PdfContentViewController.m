@@ -15,11 +15,12 @@
     self.title = self.pdfMetadata.fileName;
 
     // Do any additional setup after loading the view, typically from a nib.
-    self.page = CGPDFDocumentGetPage( self.pdf, self.pageNumber );
-    if ( self.page != NULL ) CGPDFPageRetain( self.page );
+    self.page = CGPDFDocumentGetPage(self.pdf, self.pageNumber.unsignedLongValue);
+    if (!self.page) {
+        CGPDFPageRetain(self.page);
+    }
     [self.scrollView setPDFPage:self.page];
 }
-
 
 - (void)viewDidLayoutSubviews {
     [self restoreScale];
@@ -29,7 +30,7 @@
 
 - (void)restoreScale {
     // Called on orientation change.
-    // We need to zoom out and basically reset the scrollview to look right in two-page spline view.
+    // Zoom out and basically reset the scrollview to look right
     CGRect pageRect = CGPDFPageGetBoxRect( self.page, kCGPDFMediaBox );
     CGFloat yScale = self.view.frame.size.height / pageRect.size.height;
     CGFloat xScale = self.view.frame.size.width / pageRect.size.width;
@@ -37,7 +38,6 @@
     self.scrollView.bounds = self.view.bounds;
     self.scrollView.zoomScale = 1.0;
     self.scrollView.pdfZoomScale = self.viewScale;
-
     self.scrollView.pdfSinglePageView.bounds = self.view.bounds;
     self.scrollView.pdfSinglePageView.viewScale = self.viewScale;
     [self.scrollView.pdfSinglePageView.layer setNeedsDisplay];

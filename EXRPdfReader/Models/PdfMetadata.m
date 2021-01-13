@@ -10,30 +10,29 @@
 
 @implementation PdfMetadata
 
-+ (instancetype)fileWithName:(NSString *)aFileName
-             withDescription:(NSString *)aDescription
-                withFilePath:(NSString *)aFilePath
-                withSequence:(NSInteger)aSequence
-                       andId:(NSString *)aPdfId {
-    return [[self alloc] initFileWithName:aFileName
-                          withDescription:(NSString *)aDescription
-                             withFilePath:aFilePath
-                             withSequence:aSequence
-                                    andId:aPdfId];
++ (instancetype)fileWithName:(NSString *)fileName
+             fileDescription:(NSString *)fileDescription
+                    filePath:(NSString *)filePath
+                    sequence:(NSInteger)sequence
+                       pdfId:(NSString *)pdfId {
+    return [[self alloc] initFileWithName:fileName
+                          fileDescription:(NSString *)fileDescription
+                                 filePath:filePath
+                                 sequence:sequence
+                                    pdfId:pdfId];
 }
 
-- (instancetype)initFileWithName:(NSString *)aFileName
-                 withDescription:(NSString *)aDescription
-                    withFilePath:(NSString *)aFilePath
-                    withSequence:(NSInteger)aSequence
-                           andId:(NSString *)aPdfId {
-    self = [[PdfMetadata alloc] init];
-    if (self) {
-        self.fileName = aFileName;
-        self.pdfDescription = aDescription;
-        self.filePath = aFilePath;
-        self.sequence = aSequence;
-        self.pdfId = aPdfId;
+- (instancetype)initFileWithName:(NSString *)fileName
+                 fileDescription:(NSString *)fileDescription
+                        filePath:(NSString *)filePath
+                        sequence:(NSInteger)sequence
+                           pdfId:(NSString *)pdfId {
+    if (self = [[PdfMetadata alloc] init]) {
+        self.fileName = fileName;
+        self.fileDescription = fileDescription;
+        self.filePath = filePath;
+        self.sequence = sequence;
+        self.pdfId = pdfId;
     }
     return self;
 }

@@ -12,21 +12,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfMetadata : NSObject
 
-@property(nonatomic, strong) NSString *pdfId;
+@property (strong, nonatomic) NSString *pdfId;
 
-@property(nonatomic, strong) NSString *pdfDescription;
+@property (strong, nonatomic) NSString *fileDescription;
 
-@property(nonatomic, assign) NSInteger sequence;
+@property (assign, nonatomic) NSInteger sequence;
 
-@property(nonatomic, strong) NSString *fileName;
+@property (strong, nonatomic) NSString *fileName;
 
-@property(nonatomic, strong) NSString *filePath;
+@property (strong, nonatomic) NSString *filePath;
 
-+ (instancetype)fileWithName:(NSString *)aFileName
-             withDescription:(NSString *)aDescription
-                withFilePath:(NSString *)aFilePath
-                withSequence:(NSInteger)aSequence
-                       andId:(NSString *)pdfId;
++ (instancetype)fileWithName:(NSString *)fileName
+             fileDescription:(NSString *)fileDescription
+                    filePath:(NSString *)filePath
+                    sequence:(NSInteger)sequence
+                       pdfId:(NSString *)pdfId;
 
 - (BOOL)fileExists;
 

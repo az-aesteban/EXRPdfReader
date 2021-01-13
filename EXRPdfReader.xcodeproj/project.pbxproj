@@ -127,21 +127,21 @@
 		6B455A822583555200528F09 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6B9B5ECB25A6A6FB00A4BCB5 /* PdfContentViewController.h */,
-				6B9B5ECC25A6A6FB00A4BCB5 /* PdfContentViewController.m */,
-				6B9B5ECD25A6A6FB00A4BCB5 /* PdfContentViewController.xib */,
 				6B455A83258355FB00528F09 /* PdfTableViewController.h */,
 				6B455A84258355FB00528F09 /* PdfTableViewController.m */,
 				6B455A85258355FB00528F09 /* PdfTableViewController.xib */,
 				6BD0EE3625AC686A00B0146A /* PdfTableViewCell.h */,
 				6BD0EE3725AC686A00B0146A /* PdfTableViewCell.m */,
 				6BD0EE3825AC686A00B0146A /* PdfTableViewCell.xib */,
-				6B1965EB25ADC40E002397EA /* PdfPageScrollView.h */,
-				6B1965EC25ADC40E002397EA /* PdfPageScrollView.m */,
-				6BEA2C0125AE049900C35A06 /* PdfDataSource.h */,
-				6BEA2C0225AE049900C35A06 /* PdfDataSource.m */,
 				6BEA2C0425AE071100C35A06 /* PdfRootViewController.h */,
 				6BEA2C0525AE071100C35A06 /* PdfRootViewController.m */,
+				6BEA2C0125AE049900C35A06 /* PdfDataSource.h */,
+				6BEA2C0225AE049900C35A06 /* PdfDataSource.m */,
+				6B9B5ECB25A6A6FB00A4BCB5 /* PdfContentViewController.h */,
+				6B9B5ECC25A6A6FB00A4BCB5 /* PdfContentViewController.m */,
+				6B9B5ECD25A6A6FB00A4BCB5 /* PdfContentViewController.xib */,
+				6B1965EB25ADC40E002397EA /* PdfPageScrollView.h */,
+				6B1965EC25ADC40E002397EA /* PdfPageScrollView.m */,
 				6BEA2C0725AE094900C35A06 /* PdfSinglePageView.h */,
 				6BEA2C0825AE094900C35A06 /* PdfSinglePageView.m */,
 			);

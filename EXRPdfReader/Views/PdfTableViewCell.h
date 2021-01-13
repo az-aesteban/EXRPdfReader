@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfTableViewCell : UITableViewCell
 
-- (void)setupCellContentsWithPdf:(PdfMetadata *)pdfMetadata;
+- (void)setupCellContentsWithName:(NSString *)fileName
+                  fileDescription:(NSString *)fileDescription;
 
 @end
 

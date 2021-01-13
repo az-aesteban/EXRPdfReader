@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfMetadataXMLParserDelegate : NSObject <NSXMLParserDelegate>
 
-@property(nonatomic, strong) NSMutableArray<PdfMetadata *> *pdfMetaData;
+@property (strong, nonatomic) NSMutableArray<PdfMetadata *> *pdfMetaData;
 
 @end
 

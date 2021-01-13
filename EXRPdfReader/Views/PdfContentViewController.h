@@ -15,17 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfContentViewController: UIViewController
 
-@property (strong) IBOutlet PdfPageScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet PdfPageScrollView *scrollView;
 
-@property(strong, nonatomic) PdfMetadata *pdfMetadata;
+@property (strong, nonatomic) PdfMetadata *pdfMetadata;
 
-@property CGPDFDocumentRef pdf;
+@property (assign, nonatomic) CGPDFDocumentRef pdf;
 
-@property CGPDFPageRef page;
+@property (assign, nonatomic) CGPDFPageRef page;
 
-@property int pageNumber;
+@property (strong, nonatomic) NSNumber *pageNumber;
 
-@property CGFloat viewScale;
+@property (assign, nonatomic) CGFloat viewScale;
 
 @end
 

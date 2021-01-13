@@ -13,11 +13,15 @@
 #import "PdfTableViewCell.h"
 #import "PdfRootViewController.h"
 
-static NSString *kCellIdentifier = @"pdfTableViewCell";
+static NSString *const kCellIdentifier = @"pdfTableViewCell";
 
-@implementation PdfTableViewController {
-    NSArray<PdfMetadata *> *_pdfs;
-}
+@interface PdfTableViewController ()
+
+@property (strong, nonatomic) NSArray<PdfMetadata *> *pdfs;
+
+@end
+
+@implementation PdfTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,12 +35,8 @@ static NSString *kCellIdentifier = @"pdfTableViewCell";
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _pdfs.count;
+    return self.pdfs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,17 +47,16 @@ static NSString *kCellIdentifier = @"pdfTableViewCell";
         forCellReuseIdentifier:kCellIdentifier];
         cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     }
-    PdfMetadata *pdfMeta = [_pdfs objectAtIndex:indexPath.item];
-    [cell setupCellContentsWithPdf:pdfMeta];
+    PdfMetadata *pdfMetadata = [self.pdfs objectAtIndex:indexPath.item];
+    [cell setupCellContentsWithName:pdfMetadata.fileName
+                    fileDescription:pdfMetadata.fileDescription];
     return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    PdfMetadata *selectedPdf = [_pdfs objectAtIndex:indexPath.item];
-
+    PdfMetadata *selectedPdf = [self.pdfs objectAtIndex:indexPath.item];
     if (![selectedPdf fileExists]) {
         NSLog(@"PdfTableViewController: Pdf File selected for viewing not found");
         [self promptErrorWithMessage:@"File not found"];
@@ -74,24 +73,19 @@ static NSString *kCellIdentifier = @"pdfTableViewCell";
 - (void)setupAvailablePdfs {
     NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"PdfList.xml"
                                                         ofType:nil];
-
     NSData *xmlData = [NSData dataWithContentsOfFile:xmlPath];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
-
     PdfMetadataXMLParserDelegate *parserDelegate = [[PdfMetadataXMLParserDelegate alloc] init];
     [parser setDelegate:parserDelegate];
-
     if ([parser parse]) {
         NSMutableArray *availablePdfs = [[NSMutableArray alloc] initWithArray:parserDelegate.pdfMetaData];
-
         PdfMetadata *dummyPdf = [PdfMetadata fileWithName:@"PDF for Dummies"
-                                          withDescription:@"Dummy. No PDF."
-                                             withFilePath:@""
-                                             withSequence:availablePdfs.count + 1
-                                                    andId:@"some-dummy-stuff"];
+                                              fileDescription:@"Dummy. No PDF."
+                                                 filePath:@""
+                                                 sequence:availablePdfs.count + 1
+                                                    pdfId:@"some-dummy-stuff"];
         [availablePdfs addObject:dummyPdf];
-
-        _pdfs = [availablePdfs sortedArrayUsingComparator:^NSComparisonResult(PdfMetadata *metaData, PdfMetadata *otherMetaData) {
+        self.pdfs = [availablePdfs sortedArrayUsingComparator:^NSComparisonResult(PdfMetadata *metaData, PdfMetadata *otherMetaData) {
             NSComparisonResult comparisonResult = NSOrderedSame;
             if (metaData.sequence < otherMetaData.sequence) {
                 comparisonResult = NSOrderedAscending;
@@ -102,22 +96,19 @@ static NSString *kCellIdentifier = @"pdfTableViewCell";
         }];
     } else {
         NSError *error = [parser parserError];
-        if (error) {
-            NSLog(@"PdfTableViewController: Error %@", error);
-        }
+        NSLog(@"PdfTableViewController: Error parsing pdf list xml %@", error);
     }
 }
 
 #pragma mark - User Interaction Methods
 
-- (void)promptErrorWithMessage:(NSString *)aMessage {
+- (void)promptErrorWithMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                   message:aMessage
+                                                                   message:message
                                                             preferredStyle:UIAlertControllerStyleAlert];
- 
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK"
                                                             style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+                                                          handler:^(UIAlertAction *action) {}];
     [alert addAction:defaultAction];
     [self presentViewController:alert
                        animated:YES
