@@ -7,9 +7,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PdfViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PdfContentViewController">
             <connections>
-                <outlet property="pdfContentView" destination="BL4-LQ-bCl" id="jDm-GA-Jaq"/>
+                <outlet property="scrollView" destination="TSW-TD-dwB" id="3m6-kw-UNZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,15 +18,18 @@
             <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="BL4-LQ-bCl" customClass="PdfContentView">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSW-TD-dwB" customClass="PdfPageScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <viewLayoutGuide key="safeArea" id="DTM-6l-Ekw"/>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <constraints>
+                <constraint firstItem="TSW-TD-dwB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7hG-Br-QOH"/>
+                <constraint firstItem="TSW-TD-dwB" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="KtY-dW-WQW"/>
+                <constraint firstAttribute="trailing" secondItem="TSW-TD-dwB" secondAttribute="trailing" id="U8o-PR-a4q"/>
+                <constraint firstItem="TSW-TD-dwB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lmd-Wq-dTy"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Ype-o4-lwP"/>
             <point key="canvasLocation" x="139" y="136"/>
         </view>
     </objects>

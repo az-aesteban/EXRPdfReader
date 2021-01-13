@@ -1,8 +1,8 @@
 //
-//  PdfTableViewCell.h
+//  PdfScrollView.h
 //  EXRPdfReader
 //
-//  Created by Arnold Joseph Caesar Esteban on 1/11/21.
+//  Created by Arnold Joseph Caesar Esteban on 1/12/21.
 //  Copyright © 2021 Arnold Joseph Caesar Esteban. All rights reserved.
 //
 
@@ -11,9 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfTableViewCell : UITableViewCell
-
-- (void)setupCellContentsWithPdf:(PdfMetadata *)pdfMetadata;
+@interface PdfPageScrollView : UIScrollView <UIScrollViewDelegate>
 
 @end
 

@@ -7,10 +7,11 @@
 //
 
 #import "PdfTableViewController.h"
-#import "PdfViewController.h"
+#import "PdfContentViewController.h"
 #import "PdfMetadata.h"
 #import "PdfMetadataXMLParserDelegate.h"
 #import "PdfTableViewCell.h"
+#import "PdfRootViewController.h"
 
 static NSString *kCellIdentifier = @"pdfTableViewCell";
 
@@ -53,19 +54,17 @@ static NSString *kCellIdentifier = @"pdfTableViewCell";
 
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     PdfMetadata *selectedPdf = [_pdfs objectAtIndex:indexPath.item];
 
     if (![selectedPdf fileExists]) {
         NSLog(@"PdfTableViewController: Pdf File selected for viewing not found");
-        [self promptErrorWithMessage:@"File not found."];
+        [self promptErrorWithMessage:@"File not found"];
     } else {
-        PdfViewController *pdfViewController = [[PdfViewController alloc] initWithNibName:@"PdfViewController"
-                                                                                   bundle:[NSBundle mainBundle]];
-        pdfViewController.pdfMetadata = selectedPdf;
-        [self.navigationController pushViewController:pdfViewController
+        PdfRootViewController *pdfRootViewController = [[PdfRootViewController alloc] init];
+        pdfRootViewController.metadata = selectedPdf;
+        [self.navigationController pushViewController:pdfRootViewController
                                              animated:YES];
     }
 }
@@ -73,8 +72,8 @@ static NSString *kCellIdentifier = @"pdfTableViewCell";
 #pragma mark - Data initialization Methods
 
 - (void)setupAvailablePdfs {
-    NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"PdfList"
-                                                        ofType:@"xml"];
+    NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"PdfList.xml"
+                                                        ofType:nil];
 
     NSData *xmlData = [NSData dataWithContentsOfFile:xmlPath];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];

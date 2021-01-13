@@ -18,15 +18,7 @@
 
 @implementation PdfTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
-- (void)setupCellContentsWithPdf:(PdfMetadata *) pdfMetadata {
+- (void)setupCellContentsWithPdf:(PdfMetadata *)pdfMetadata {
     self.fileNameLabel.text = pdfMetadata.fileName;
     self.fileDescriptionLabel.text = pdfMetadata.pdfDescription;
 }

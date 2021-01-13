@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1965ED25ADC40E002397EA /* PdfPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1965EC25ADC40E002397EA /* PdfPageScrollView.m */; };
 		6B455A6325834D6500528F09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B455A6225834D6500528F09 /* AppDelegate.m */; };
 		6B455A6625834D6500528F09 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B455A6525834D6500528F09 /* SceneDelegate.m */; };
 		6B455A6F25834D6500528F09 /* EXRPdfReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B455A6D25834D6500528F09 /* EXRPdfReader.xcdatamodeld */; };
@@ -15,19 +16,23 @@
 		6B455A7725834D6600528F09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B455A7625834D6600528F09 /* main.m */; };
 		6B455A86258355FB00528F09 /* PdfTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B455A84258355FB00528F09 /* PdfTableViewController.m */; };
 		6B455A87258355FB00528F09 /* PdfTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B455A85258355FB00528F09 /* PdfTableViewController.xib */; };
-		6B9B5ECE25A6A6FB00A4BCB5 /* PdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B5ECC25A6A6FB00A4BCB5 /* PdfViewController.m */; };
+		6B9B5ECE25A6A6FB00A4BCB5 /* PdfContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B5ECC25A6A6FB00A4BCB5 /* PdfContentViewController.m */; };
 		6B9B5ED425A6AB4D00A4BCB5 /* PdfMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B5ED325A6AB4D00A4BCB5 /* PdfMetadata.m */; };
 		6B9B5ED725A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ED525A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf */; };
 		6B9B5ED825A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ED625A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf */; };
-		6B9B5EDB25A7072700A4BCB5 /* PdfContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B5EDA25A7072700A4BCB5 /* PdfContentView.m */; };
 		6BD0EE3525AC046100B0146A /* PdfMetadataXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3425AC046100B0146A /* PdfMetadataXMLParserDelegate.m */; };
 		6BD0EE3925AC686A00B0146A /* PdfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3725AC686A00B0146A /* PdfTableViewCell.m */; };
 		6BD0EE3A25AC686A00B0146A /* PdfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3825AC686A00B0146A /* PdfTableViewCell.xib */; };
-		6BE7B45B25AB736500E9C8F1 /* PdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ECD25A6A6FB00A4BCB5 /* PdfViewController.xib */; };
+		6BE7B45B25AB736500E9C8F1 /* PdfContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ECD25A6A6FB00A4BCB5 /* PdfContentViewController.xib */; };
 		6BE7B45D25AB7B5100E9C8F1 /* PdfList.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6BE7B45C25AB7B5100E9C8F1 /* PdfList.xml */; };
+		6BEA2C0325AE049900C35A06 /* PdfDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA2C0225AE049900C35A06 /* PdfDataSource.m */; };
+		6BEA2C0625AE071100C35A06 /* PdfRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA2C0525AE071100C35A06 /* PdfRootViewController.m */; };
+		6BEA2C0925AE094900C35A06 /* PdfSinglePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA2C0825AE094900C35A06 /* PdfSinglePageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B1965EB25ADC40E002397EA /* PdfPageScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfPageScrollView.h; sourceTree = "<group>"; };
+		6B1965EC25ADC40E002397EA /* PdfPageScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfPageScrollView.m; sourceTree = "<group>"; };
 		6B455A5E25834D6400528F09 /* EXRPdfReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EXRPdfReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B455A6125834D6500528F09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B455A6225834D6500528F09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -41,21 +46,25 @@
 		6B455A83258355FB00528F09 /* PdfTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfTableViewController.h; sourceTree = "<group>"; };
 		6B455A84258355FB00528F09 /* PdfTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfTableViewController.m; sourceTree = "<group>"; };
 		6B455A85258355FB00528F09 /* PdfTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PdfTableViewController.xib; sourceTree = "<group>"; };
-		6B9B5ECB25A6A6FB00A4BCB5 /* PdfViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfViewController.h; sourceTree = "<group>"; };
-		6B9B5ECC25A6A6FB00A4BCB5 /* PdfViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfViewController.m; sourceTree = "<group>"; };
-		6B9B5ECD25A6A6FB00A4BCB5 /* PdfViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PdfViewController.xib; sourceTree = "<group>"; };
+		6B9B5ECB25A6A6FB00A4BCB5 /* PdfContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfContentViewController.h; sourceTree = "<group>"; };
+		6B9B5ECC25A6A6FB00A4BCB5 /* PdfContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfContentViewController.m; sourceTree = "<group>"; };
+		6B9B5ECD25A6A6FB00A4BCB5 /* PdfContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PdfContentViewController.xib; sourceTree = "<group>"; };
 		6B9B5ED225A6AB4D00A4BCB5 /* PdfMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfMetadata.h; sourceTree = "<group>"; };
 		6B9B5ED325A6AB4D00A4BCB5 /* PdfMetadata.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfMetadata.m; sourceTree = "<group>"; };
 		6B9B5ED525A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 005_PDF_LectureSlides.pdf; sourceTree = "<group>"; };
 		6B9B5ED625A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 005_PDF_ChallengeDetails.pdf; sourceTree = "<group>"; };
-		6B9B5ED925A7072700A4BCB5 /* PdfContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfContentView.h; sourceTree = "<group>"; };
-		6B9B5EDA25A7072700A4BCB5 /* PdfContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfContentView.m; sourceTree = "<group>"; };
 		6BD0EE3325AC046100B0146A /* PdfMetadataXMLParserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfMetadataXMLParserDelegate.h; sourceTree = "<group>"; };
 		6BD0EE3425AC046100B0146A /* PdfMetadataXMLParserDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfMetadataXMLParserDelegate.m; sourceTree = "<group>"; };
 		6BD0EE3625AC686A00B0146A /* PdfTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfTableViewCell.h; sourceTree = "<group>"; };
 		6BD0EE3725AC686A00B0146A /* PdfTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfTableViewCell.m; sourceTree = "<group>"; };
 		6BD0EE3825AC686A00B0146A /* PdfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PdfTableViewCell.xib; sourceTree = "<group>"; };
 		6BE7B45C25AB7B5100E9C8F1 /* PdfList.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PdfList.xml; sourceTree = "<group>"; };
+		6BEA2C0125AE049900C35A06 /* PdfDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfDataSource.h; sourceTree = "<group>"; };
+		6BEA2C0225AE049900C35A06 /* PdfDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfDataSource.m; sourceTree = "<group>"; };
+		6BEA2C0425AE071100C35A06 /* PdfRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfRootViewController.h; sourceTree = "<group>"; };
+		6BEA2C0525AE071100C35A06 /* PdfRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfRootViewController.m; sourceTree = "<group>"; };
+		6BEA2C0725AE094900C35A06 /* PdfSinglePageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfSinglePageView.h; sourceTree = "<group>"; };
+		6BEA2C0825AE094900C35A06 /* PdfSinglePageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfSinglePageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,17 +127,23 @@
 		6B455A822583555200528F09 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6B9B5ECB25A6A6FB00A4BCB5 /* PdfContentViewController.h */,
+				6B9B5ECC25A6A6FB00A4BCB5 /* PdfContentViewController.m */,
+				6B9B5ECD25A6A6FB00A4BCB5 /* PdfContentViewController.xib */,
 				6B455A83258355FB00528F09 /* PdfTableViewController.h */,
 				6B455A84258355FB00528F09 /* PdfTableViewController.m */,
 				6B455A85258355FB00528F09 /* PdfTableViewController.xib */,
-				6B9B5ECB25A6A6FB00A4BCB5 /* PdfViewController.h */,
-				6B9B5ECC25A6A6FB00A4BCB5 /* PdfViewController.m */,
-				6B9B5ECD25A6A6FB00A4BCB5 /* PdfViewController.xib */,
-				6B9B5ED925A7072700A4BCB5 /* PdfContentView.h */,
-				6B9B5EDA25A7072700A4BCB5 /* PdfContentView.m */,
 				6BD0EE3625AC686A00B0146A /* PdfTableViewCell.h */,
 				6BD0EE3725AC686A00B0146A /* PdfTableViewCell.m */,
 				6BD0EE3825AC686A00B0146A /* PdfTableViewCell.xib */,
+				6B1965EB25ADC40E002397EA /* PdfPageScrollView.h */,
+				6B1965EC25ADC40E002397EA /* PdfPageScrollView.m */,
+				6BEA2C0125AE049900C35A06 /* PdfDataSource.h */,
+				6BEA2C0225AE049900C35A06 /* PdfDataSource.m */,
+				6BEA2C0425AE071100C35A06 /* PdfRootViewController.h */,
+				6BEA2C0525AE071100C35A06 /* PdfRootViewController.m */,
+				6BEA2C0725AE094900C35A06 /* PdfSinglePageView.h */,
+				6BEA2C0825AE094900C35A06 /* PdfSinglePageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,7 +227,7 @@
 				6B455A7125834D6600528F09 /* Assets.xcassets in Resources */,
 				6BD0EE3A25AC686A00B0146A /* PdfTableViewCell.xib in Resources */,
 				6B9B5ED825A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf in Resources */,
-				6BE7B45B25AB736500E9C8F1 /* PdfViewController.xib in Resources */,
+				6BE7B45B25AB736500E9C8F1 /* PdfContentViewController.xib in Resources */,
 				6B9B5ED725A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf in Resources */,
 				6B455A87258355FB00528F09 /* PdfTableViewController.xib in Resources */,
 				6BE7B45D25AB7B5100E9C8F1 /* PdfList.xml in Resources */,
@@ -227,13 +242,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B455A86258355FB00528F09 /* PdfTableViewController.m in Sources */,
-				6B9B5ECE25A6A6FB00A4BCB5 /* PdfViewController.m in Sources */,
+				6B9B5ECE25A6A6FB00A4BCB5 /* PdfContentViewController.m in Sources */,
 				6B455A7725834D6600528F09 /* main.m in Sources */,
 				6BD0EE3525AC046100B0146A /* PdfMetadataXMLParserDelegate.m in Sources */,
-				6B9B5EDB25A7072700A4BCB5 /* PdfContentView.m in Sources */,
 				6B455A6F25834D6500528F09 /* EXRPdfReader.xcdatamodeld in Sources */,
+				6BEA2C0325AE049900C35A06 /* PdfDataSource.m in Sources */,
 				6B9B5ED425A6AB4D00A4BCB5 /* PdfMetadata.m in Sources */,
+				6B1965ED25ADC40E002397EA /* PdfPageScrollView.m in Sources */,
 				6BD0EE3925AC686A00B0146A /* PdfTableViewCell.m in Sources */,
+				6BEA2C0925AE094900C35A06 /* PdfSinglePageView.m in Sources */,
+				6BEA2C0625AE071100C35A06 /* PdfRootViewController.m in Sources */,
 				6B455A6325834D6500528F09 /* AppDelegate.m in Sources */,
 				6B455A6625834D6500528F09 /* SceneDelegate.m in Sources */,
 			);
