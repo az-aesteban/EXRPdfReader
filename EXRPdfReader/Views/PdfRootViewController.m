@@ -16,27 +16,33 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
+@property (strong, nonatomic) NSString *filePath;
+
 @end
 
 @implementation PdfRootViewController
 
+- (instancetype)initWithFilePath:(NSString *)filePath {
+    if (self = [super init]) {
+        self.filePath = filePath;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pdfDataSource = [[PdfDataSource alloc] initWithPdfMetadata:self.pdfMetadata];
-    // Configure the page view controller and add it as a child view controller.
+    self.pdfDataSource = [[PdfDataSource alloc] initWithFilePath:self.filePath];
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                               navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                             options:nil];
     PdfContentViewController *startingViewController = [self.pdfDataSource viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers
+    [self.pageViewController setViewControllers:@[startingViewController]
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:NO
                                      completion:NULL];
     self.pageViewController.dataSource = self.pdfDataSource;
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
-    // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
     CGRect pageViewRect = self.view.bounds;
     self.pageViewController.view.frame = pageViewRect;
     [self.pageViewController didMoveToParentViewController:self];

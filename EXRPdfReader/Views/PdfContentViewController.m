@@ -12,8 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet PdfPageScrollView *scrollView;
 
-@property (strong, nonatomic) PdfMetadata *pdfMetadata;
-
 @property (assign, nonatomic) CGPDFPageRef page;
 
 @property (assign, nonatomic) CGFloat viewScale;
@@ -24,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.pdfMetadata.fileName;
 
     // Do any additional setup after loading the view, typically from a nib.
     self.page = CGPDFDocumentGetPage(self.pdf, self.pageNumber.unsignedLongValue);

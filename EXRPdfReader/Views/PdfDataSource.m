@@ -19,18 +19,16 @@
 
 @implementation PdfDataSource
 
-- (instancetype)initWithPdfMetadata:(PdfMetadata *)metadata {
+- (instancetype)initWithFilePath:(NSString *)filePath {
     if (self = [super init]) {
-        // Create the data model.
-        NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:metadata.filePath
+        NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:filePath
                                                 withExtension:nil];
         if (pdfURL) {
-            NSLog(@"PdfDataSource: Loaded PDF file with pdf-id %@", metadata.pdfId);
+            NSLog(@"PdfDataSource: Successfully loaded PDF file");
             self.pdf = CGPDFDocumentCreateWithURL((__bridge CFURLRef) pdfURL);
             self.numberOfPages = CGPDFDocumentGetNumberOfPages(self.pdf);
         } else {
-            // Missing pdf file, cannot proceed.
-            NSLog(@"PdfDataSource: Missing pdf file %@", metadata.filePath);
+            NSLog(@"PdfDataSource: Missing pdf file %@", filePath);
         }
     }
     return self;

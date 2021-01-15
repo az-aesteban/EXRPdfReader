@@ -10,18 +10,6 @@
 
 @implementation PdfMetadata
 
-+ (instancetype)fileWithName:(NSString *)fileName
-             fileDescription:(NSString *)fileDescription
-                    filePath:(NSString *)filePath
-                    sequence:(NSInteger)sequence
-                       pdfId:(NSString *)pdfId {
-    return [[self alloc] initFileWithName:fileName
-                          fileDescription:(NSString *)fileDescription
-                                 filePath:filePath
-                                 sequence:sequence
-                                    pdfId:pdfId];
-}
-
 - (instancetype)initFileWithName:(NSString *)fileName
                  fileDescription:(NSString *)fileDescription
                         filePath:(NSString *)filePath

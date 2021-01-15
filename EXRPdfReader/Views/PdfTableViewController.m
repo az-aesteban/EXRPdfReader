@@ -68,8 +68,8 @@ static NSString *const kCellIdentifier = @"pdfTableViewCell";
             NSLog(@"PdfTableViewController: Pdf File selected for viewing not found");
             [self promptErrorWithMessage:@"File not found"];
         } else {
-            PdfRootViewController *pdfRootViewController = [[PdfRootViewController alloc] init];
-            pdfRootViewController.pdfMetadata = selectedPdf;
+            NSLog(@"PdfTableViewController: Selected PDF File %@", selectedPdf.pdfId);
+            PdfRootViewController *pdfRootViewController = [[PdfRootViewController alloc] initWithFilePath:selectedPdf.filePath];
             [self.navigationController pushViewController:pdfRootViewController
                                                  animated:YES];
         }
@@ -87,11 +87,11 @@ static NSString *const kCellIdentifier = @"pdfTableViewCell";
     [parser setDelegate:parserDelegate];
     if ([parser parse]) {
         NSMutableArray *availablePdfs = [[NSMutableArray alloc] initWithArray:parserDelegate.pdfMetaData];
-        PdfMetadata *dummyPdf = [PdfMetadata fileWithName:@"PDF for Dummies"
-                                          fileDescription:@"Dummy. No PDF."
-                                                 filePath:@""
-                                                 sequence:availablePdfs.count + 1
-                                                    pdfId:@"some-dummy-stuff"];
+        PdfMetadata *dummyPdf = [[PdfMetadata alloc] initFileWithName:@"PDF for Dummies"
+                                                      fileDescription:@"Dummy. No PDF."
+                                                             filePath:@""
+                                                             sequence:availablePdfs.count + 1
+                                                                pdfId:@"some-dummy-stuff"];
         [availablePdfs addObject:dummyPdf];
         self.pdfs = [availablePdfs sortedArrayUsingComparator:^NSComparisonResult(PdfMetadata *metaData, PdfMetadata *otherMetaData) {
             NSComparisonResult comparisonResult = NSOrderedSame;
@@ -126,7 +126,7 @@ static NSString *const kCellIdentifier = @"pdfTableViewCell";
 #pragma mark - Layout Helper Methods
 
 - (void)setupCellHeight {
-    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 

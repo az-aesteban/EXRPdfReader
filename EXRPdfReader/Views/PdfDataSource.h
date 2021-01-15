@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfDataSource : NSObject <UIPageViewControllerDataSource>
 
-- (instancetype)initWithPdfMetadata:(PdfMetadata *)metadata;
+- (instancetype)initWithFilePath:(NSString *)filePath;
 
 - (PdfContentViewController *)viewControllerAtIndex:(NSUInteger)index;
 

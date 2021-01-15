@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfRootViewController : UIViewController
 
-@property (strong, nonatomic) PdfMetadata *pdfMetadata;
+- (instancetype)initWithFilePath:(NSString *)filePath;
 
 @end
 

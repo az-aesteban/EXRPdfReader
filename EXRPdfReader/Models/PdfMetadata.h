@@ -22,11 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSString *filePath;
 
-+ (instancetype)fileWithName:(NSString *)fileName
-             fileDescription:(NSString *)fileDescription
-                    filePath:(NSString *)filePath
-                    sequence:(NSInteger)sequence
-                       pdfId:(NSString *)pdfId;
+- (instancetype)initFileWithName:(NSString *)fileName
+                 fileDescription:(NSString *)fileDescription
+                        filePath:(NSString *)filePath
+                        sequence:(NSInteger)sequence
+                           pdfId:(NSString *)pdfId;
 
 - (BOOL)fileExists;
 
