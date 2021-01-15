@@ -1,12 +1,12 @@
 //
-//  MyXmlParserDelegate.m
+//  EXRPdfMetadataXMLParserDelegate.m
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/11/21.
 //  Copyright © 2021 Arnold Joseph Caesar Esteban. All rights reserved.
 //
 
-#import "PdfMetadataXMLParserDelegate.h"
+#import "EXRPdfMetadataXMLParserDelegate.h"
 
 static NSString *const kPdfElementName = @"pdf";
 static NSString *const kPdfFileNameElementName = @"name";
@@ -15,7 +15,7 @@ static NSString *const kPdfSequenceElementName = @"seq";
 static NSString *const kPdfIdElementName = @"pdf-id";
 static NSString *const kPdfDescriptionElementName = @"desc";
 
-@interface PdfMetadataXMLParserDelegate ()
+@interface EXRPdfMetadataXMLParserDelegate ()
 
 @property (strong, nonatomic) NSString *currentElementName;
 
@@ -25,7 +25,7 @@ static NSString *const kPdfDescriptionElementName = @"desc";
 
 @end
 
-@implementation PdfMetadataXMLParserDelegate
+@implementation EXRPdfMetadataXMLParserDelegate
 
 #pragma mark - NSXMLParserDelegate Methods
 

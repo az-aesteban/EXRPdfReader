@@ -20,7 +20,7 @@
 		6B9B5ED425A6AB4D00A4BCB5 /* PdfMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B5ED325A6AB4D00A4BCB5 /* PdfMetadata.m */; };
 		6B9B5ED725A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ED525A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf */; };
 		6B9B5ED825A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ED625A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf */; };
-		6BD0EE3525AC046100B0146A /* PdfMetadataXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3425AC046100B0146A /* PdfMetadataXMLParserDelegate.m */; };
+		6BD0EE3525AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3425AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.m */; };
 		6BD0EE3925AC686A00B0146A /* PdfTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3725AC686A00B0146A /* PdfTableViewCell.m */; };
 		6BD0EE3A25AC686A00B0146A /* PdfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD0EE3825AC686A00B0146A /* PdfTableViewCell.xib */; };
 		6BE7B45B25AB736500E9C8F1 /* PdfContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B5ECD25A6A6FB00A4BCB5 /* PdfContentViewController.xib */; };
@@ -53,8 +53,8 @@
 		6B9B5ED325A6AB4D00A4BCB5 /* PdfMetadata.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfMetadata.m; sourceTree = "<group>"; };
 		6B9B5ED525A6FCE400A4BCB5 /* 005_PDF_LectureSlides.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 005_PDF_LectureSlides.pdf; sourceTree = "<group>"; };
 		6B9B5ED625A6FCE400A4BCB5 /* 005_PDF_ChallengeDetails.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 005_PDF_ChallengeDetails.pdf; sourceTree = "<group>"; };
-		6BD0EE3325AC046100B0146A /* PdfMetadataXMLParserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfMetadataXMLParserDelegate.h; sourceTree = "<group>"; };
-		6BD0EE3425AC046100B0146A /* PdfMetadataXMLParserDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfMetadataXMLParserDelegate.m; sourceTree = "<group>"; };
+		6BD0EE3325AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXRPdfMetadataXMLParserDelegate.h; sourceTree = "<group>"; };
+		6BD0EE3425AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EXRPdfMetadataXMLParserDelegate.m; sourceTree = "<group>"; };
 		6BD0EE3625AC686A00B0146A /* PdfTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PdfTableViewCell.h; sourceTree = "<group>"; };
 		6BD0EE3725AC686A00B0146A /* PdfTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfTableViewCell.m; sourceTree = "<group>"; };
 		6BD0EE3825AC686A00B0146A /* PdfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PdfTableViewCell.xib; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 		6BD0EE3225AC044B00B0146A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6BD0EE3325AC046100B0146A /* PdfMetadataXMLParserDelegate.h */,
-				6BD0EE3425AC046100B0146A /* PdfMetadataXMLParserDelegate.m */,
+				6BD0EE3325AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.h */,
+				6BD0EE3425AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 				6B455A86258355FB00528F09 /* PdfTableViewController.m in Sources */,
 				6B9B5ECE25A6A6FB00A4BCB5 /* PdfContentViewController.m in Sources */,
 				6B455A7725834D6600528F09 /* main.m in Sources */,
-				6BD0EE3525AC046100B0146A /* PdfMetadataXMLParserDelegate.m in Sources */,
+				6BD0EE3525AC046100B0146A /* EXRPdfMetadataXMLParserDelegate.m in Sources */,
 				6B455A6F25834D6500528F09 /* EXRPdfReader.xcdatamodeld in Sources */,
 				6BEA2C0325AE049900C35A06 /* PdfDataSource.m in Sources */,
 				6B9B5ED425A6AB4D00A4BCB5 /* PdfMetadata.m in Sources */,

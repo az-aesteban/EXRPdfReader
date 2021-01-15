@@ -8,6 +8,14 @@
 
 #import "PdfPageScrollView.h"
 
+@interface PdfPageScrollView ()
+
+@property (assign, nonatomic) CGRect pageRect;
+
+@property (assign, nonatomic) CGPDFPageRef pdfPageRef;
+
+@end
+
 @implementation PdfPageScrollView
 
 - (void)initialize {
@@ -37,13 +45,11 @@
     // Center the image as it becomes smaller than the size of the screen.
     CGSize boundsSize = self.bounds.size;
     CGRect pdfSinglePageViewFrame = self.pdfSinglePageView.frame;
-    // Center horizontally.
     if (pdfSinglePageViewFrame.size.width < boundsSize.width) {
         pdfSinglePageViewFrame.origin.x = (boundsSize.width - pdfSinglePageViewFrame.size.width) / 2;
     } else {
         pdfSinglePageViewFrame.origin.x = 0;
     }
-    // Center vertically.
     if (pdfSinglePageViewFrame.size.height < boundsSize.height) {
         pdfSinglePageViewFrame.origin.y = (boundsSize.height - pdfSinglePageViewFrame.size.height) / 2;
     } else {
@@ -72,19 +78,21 @@
     if (!self.pdfPageRef) {
         self.pageRect = self.bounds;
     } else {
-        self.pageRect = CGPDFPageGetBoxRect(self.pdfPageRef, kCGPDFMediaBox);
-        self.pdfZoomScale = self.frame.size.width / self.pageRect.size.width;
-        self.pageRect = CGRectMake(self.pageRect.origin.x, self.pageRect.origin.y, self.pageRect.size.width * self.pdfZoomScale, self.pageRect.size.height * self.pdfZoomScale);
+        self.pageRect = CGPDFPageGetBoxRect(self.pdfPageRef,
+                                            kCGPDFMediaBox);
+        self.pageRect = CGRectMake(self.pageRect.origin.x,
+                                   self.pageRect.origin.y,
+                                   self.pageRect.size.width,
+                                   self.pageRect.size.height);
     }
-    // Create the page view based on the size of the PDF page and scale it to fit the view.
-    [self replacePdfPageViewWithFrame:self.pageRect];
+    self.pdfSinglePageView = [self pdfPageViewWithFrame:self.pageRect];
 }
 
-- (void)replacePdfPageViewWithFrame:(CGRect)frame {
+- (PdfSinglePageView *)pdfPageViewWithFrame:(CGRect)frame {
     PdfSinglePageView *newPdfSinglePageView = [[PdfSinglePageView alloc] initWithFrame:frame];
     [newPdfSinglePageView setPage:self.pdfPageRef];
     [self addSubview: newPdfSinglePageView];
-    self.pdfSinglePageView = newPdfSinglePageView;
+    return newPdfSinglePageView;
 }
 
 @end

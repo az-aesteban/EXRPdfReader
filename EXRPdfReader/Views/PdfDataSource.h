@@ -14,10 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfDataSource : NSObject <UIPageViewControllerDataSource>
 
-@property (assign, nonatomic) CGPDFDocumentRef pdf;
-
-@property (assign, nonatomic) NSInteger numberOfPages;
-
 - (instancetype)initWithPdfMetadata:(PdfMetadata *)metadata;
 
 - (PdfContentViewController *)viewControllerAtIndex:(NSUInteger)index;

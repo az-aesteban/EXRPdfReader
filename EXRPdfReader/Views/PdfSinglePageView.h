@@ -12,11 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfSinglePageView : UIView
 
-@property CGPDFPageRef pdfPage;
+@property CGPDFPageRef pdfPageRef;
 
 @property CGFloat viewScale;
-
-- (id)initWithFrame:(CGRect)frame scale:(CGFloat)scale;
 
 - (void)setPage:(CGPDFPageRef)newPage;
 

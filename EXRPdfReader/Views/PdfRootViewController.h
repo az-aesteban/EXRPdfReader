@@ -14,11 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PdfRootViewController : UIViewController
 
-@property (strong, nonatomic) PdfMetadata *metadata;
-
-@property (strong, nonatomic) UIPageViewController *pageViewController;
-
-@property (strong, nonatomic) PdfDataSource *pdfDataSource;
+@property (strong, nonatomic) PdfMetadata *pdfMetadata;
 
 @end
 

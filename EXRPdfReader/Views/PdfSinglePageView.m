@@ -8,21 +8,19 @@
 
 #import "PdfSinglePageView.h"
 
+static NSInteger const kTileLayerLOD = 3;
+static NSInteger const kTileLayerLODBias = 4;
+static NSInteger const kTileLayerHeight = 512.0;
+static NSInteger const kTileLayerWidth = 512.0;
+
 @implementation PdfSinglePageView
 
-// Create a new PdfSinglePageView with the desired frame and scale.
-- (id)initWithFrame:(CGRect)frame scale:(CGFloat)scale
-{
-    self = [super initWithFrame:frame];
-    if (self) {
+- (id)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
         CATiledLayer *tiledLayer = (CATiledLayer *)[self layer];
-        // levelsOfDetail and levelsOfDetailBias determine how the layer is rendered at different zoom levels.
-        // This only matters while the view is zooming, because once the the view is done zooming
-        // a new single page pdf view is created at the correct size and scale.
-        tiledLayer.levelsOfDetail = 4;
-        tiledLayer.levelsOfDetailBias = 3;
-        tiledLayer.tileSize = CGSizeMake(512.0, 512.0);
-        self.viewScale = scale;
+        tiledLayer.levelsOfDetail = kTileLayerLOD;
+        tiledLayer.levelsOfDetailBias = kTileLayerLODBias;
+        tiledLayer.tileSize = CGSizeMake(kTileLayerWidth, kTileLayerHeight);
         self.layer.borderColor = [UIColor lightGrayColor].CGColor;
         self.layer.borderWidth = 5;
     }
@@ -34,11 +32,11 @@
 }
 
 - (void)setPage:(CGPDFPageRef)newPage {
-    if (self.pdfPage) {
-        CGPDFPageRelease( self.pdfPage);
+    if (self.pdfPageRef) {
+        CGPDFPageRelease(self.pdfPageRef);
     }
     if (newPage) {
-        self.pdfPage = CGPDFPageRetain(newPage);
+        self.pdfPageRef = CGPDFPageRetain(newPage);
     }
 }
 
@@ -48,7 +46,7 @@
     CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
     CGContextFillRect(context, self.bounds);
  
-    if (self.pdfPage) {
+    if (self.pdfPageRef) {
         CGContextSaveGState(context);
 
         // Flip the context so that the PDF page is rendered right side up.
@@ -59,10 +57,9 @@
         CGContextScaleCTM(context, self.viewScale, self.viewScale);
 
         // Draw the page, restore and exit
-        CGContextDrawPDFPage(context, self.pdfPage);
+        CGContextDrawPDFPage(context, self.pdfPageRef);
         CGContextRestoreGState(context);
     }
 }
-
 
 @end

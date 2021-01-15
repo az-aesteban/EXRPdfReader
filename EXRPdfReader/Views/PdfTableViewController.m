@@ -9,7 +9,7 @@
 #import "PdfTableViewController.h"
 #import "PdfContentViewController.h"
 #import "PdfMetadata.h"
-#import "PdfMetadataXMLParserDelegate.h"
+#import "EXRPdfMetadataXMLParserDelegate.h"
 #import "PdfTableViewCell.h"
 #import "PdfRootViewController.h"
 
@@ -47,24 +47,32 @@ static NSString *const kCellIdentifier = @"pdfTableViewCell";
         forCellReuseIdentifier:kCellIdentifier];
         cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     }
-    PdfMetadata *pdfMetadata = [self.pdfs objectAtIndex:indexPath.item];
-    [cell setupCellContentsWithName:pdfMetadata.fileName
-                    fileDescription:pdfMetadata.fileDescription];
+    if (indexPath.item >= self.pdfs.count) {
+        NSAssert(NO, @"PdfTableViewController: No pdf for selected index path %li", indexPath.item);
+    } else {
+        PdfMetadata *pdfMetadata = [self.pdfs objectAtIndex:indexPath.item];
+        [cell setupCellContentsWithName:pdfMetadata.fileName
+                        fileDescription:pdfMetadata.fileDescription];
+    }
     return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PdfMetadata *selectedPdf = [self.pdfs objectAtIndex:indexPath.item];
-    if (![selectedPdf fileExists]) {
-        NSLog(@"PdfTableViewController: Pdf File selected for viewing not found");
-        [self promptErrorWithMessage:@"File not found"];
+    if (indexPath.item >= self.pdfs.count) {
+        NSAssert(NO, @"PdfTableViewController: No pdf for selected index path %li", indexPath.item);
     } else {
-        PdfRootViewController *pdfRootViewController = [[PdfRootViewController alloc] init];
-        pdfRootViewController.metadata = selectedPdf;
-        [self.navigationController pushViewController:pdfRootViewController
-                                             animated:YES];
+        PdfMetadata *selectedPdf = [self.pdfs objectAtIndex:indexPath.item];
+        if (![selectedPdf fileExists]) {
+            NSLog(@"PdfTableViewController: Pdf File selected for viewing not found");
+            [self promptErrorWithMessage:@"File not found"];
+        } else {
+            PdfRootViewController *pdfRootViewController = [[PdfRootViewController alloc] init];
+            pdfRootViewController.pdfMetadata = selectedPdf;
+            [self.navigationController pushViewController:pdfRootViewController
+                                                 animated:YES];
+        }
     }
 }
 
@@ -75,12 +83,12 @@ static NSString *const kCellIdentifier = @"pdfTableViewCell";
                                                         ofType:nil];
     NSData *xmlData = [NSData dataWithContentsOfFile:xmlPath];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
-    PdfMetadataXMLParserDelegate *parserDelegate = [[PdfMetadataXMLParserDelegate alloc] init];
+    EXRPdfMetadataXMLParserDelegate *parserDelegate = [[EXRPdfMetadataXMLParserDelegate alloc] init];
     [parser setDelegate:parserDelegate];
     if ([parser parse]) {
         NSMutableArray *availablePdfs = [[NSMutableArray alloc] initWithArray:parserDelegate.pdfMetaData];
         PdfMetadata *dummyPdf = [PdfMetadata fileWithName:@"PDF for Dummies"
-                                              fileDescription:@"Dummy. No PDF."
+                                          fileDescription:@"Dummy. No PDF."
                                                  filePath:@""
                                                  sequence:availablePdfs.count + 1
                                                     pdfId:@"some-dummy-stuff"];

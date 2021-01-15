@@ -9,6 +9,14 @@
 #import "PdfDataSource.h"
 #import "PdfContentViewController.h"
 
+@interface PdfDataSource ()
+
+@property (assign, nonatomic) CGPDFDocumentRef pdf;
+
+@property (assign, nonatomic) NSInteger numberOfPages;
+
+@end
+
 @implementation PdfDataSource
 
 - (instancetype)initWithPdfMetadata:(PdfMetadata *)metadata {
@@ -17,7 +25,7 @@
         NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:metadata.filePath
                                                 withExtension:nil];
         if (pdfURL) {
-            NSLog(@"Loaded PDF file with pdf-id %@", metadata.pdfId);
+            NSLog(@"PdfDataSource: Loaded PDF file with pdf-id %@", metadata.pdfId);
             self.pdf = CGPDFDocumentCreateWithURL((__bridge CFURLRef) pdfURL);
             self.numberOfPages = CGPDFDocumentGetNumberOfPages(self.pdf);
         } else {
@@ -45,7 +53,6 @@
     NSUInteger index = [self indexOfViewController:(PdfContentViewController *)viewController];
     UIViewController *viewControllerBefore = nil;
     if (index != 0 && index != NSNotFound) {
-        NSLog(@"PdfDataSource: User views previous page %li", index);
         viewControllerBefore = [self viewControllerAtIndex:index - 1];
     }
     return viewControllerBefore;
@@ -56,7 +63,6 @@
     UIViewController *viewControllerAfter = nil;
     NSUInteger nextPageIndex = index + 1;
     if (index != NSNotFound && nextPageIndex != self.numberOfPages) {
-        NSLog(@"PdfDataSource: User views next page %li", nextPageIndex + 1);
         viewControllerAfter = [self viewControllerAtIndex:nextPageIndex];
     }
     return viewControllerAfter;

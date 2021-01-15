@@ -1,5 +1,5 @@
 //
-//  MyXmlParserDelegate.h
+//  EXRPdfMetadataXMLParserDelegate.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/11/21.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfMetadataXMLParserDelegate : NSObject <NSXMLParserDelegate>
+@interface EXRPdfMetadataXMLParserDelegate : NSObject <NSXMLParserDelegate>
 
 @property (strong, nonatomic) NSMutableArray<PdfMetadata *> *pdfMetaData;
 

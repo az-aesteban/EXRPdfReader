@@ -10,13 +10,21 @@
 #import "PdfDataSource.h"
 #import "PdfContentViewController.h"
 
+@interface PdfRootViewController ()
+
+@property (strong, nonatomic) PdfDataSource *pdfDataSource;
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+
+@end
+
 @implementation PdfRootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pdfDataSource = [[PdfDataSource alloc] initWithPdfMetadata:self.metadata];
+    self.pdfDataSource = [[PdfDataSource alloc] initWithPdfMetadata:self.pdfMetadata];
     // Configure the page view controller and add it as a child view controller.
-    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                               navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                             options:nil];
     PdfContentViewController *startingViewController = [self.pdfDataSource viewControllerAtIndex:0];

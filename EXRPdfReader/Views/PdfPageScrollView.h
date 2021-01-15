@@ -16,13 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) PdfSinglePageView *pdfSinglePageView;
 
-@property (assign, nonatomic) CGRect pageRect;
-
-@property (assign, nonatomic) CGFloat pdfZoomScale;
-
-// A reference to the page being drawn, we manage the storage ourselves for the cf type
-@property (assign, nonatomic) CGPDFPageRef pdfPageRef;
-
 - (void)setPDFPage:(CGPDFPageRef)PDFPage;
 
 @end
