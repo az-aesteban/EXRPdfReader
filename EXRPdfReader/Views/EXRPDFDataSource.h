@@ -1,5 +1,5 @@
 //
-//  PdfRootViewController.h
+//  EXRPDFDataSource.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/13/21.
@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PdfDataSource.h"
-#import "PdfMetadata.h"
+#import "EXRPDFMetadata.h"
+#import "EXRPDFContentViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfRootViewController : UIViewController
+@interface EXRPDFDataSource : NSObject <UIPageViewControllerDataSource>
 
 - (instancetype)initWithFilePath:(NSString *)filePath;
+
+- (EXRPDFContentViewController *)viewControllerAtIndex:(NSUInteger)index;
 
 @end
 

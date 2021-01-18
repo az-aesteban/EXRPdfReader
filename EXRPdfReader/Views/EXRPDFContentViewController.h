@@ -1,5 +1,5 @@
 //
-//  PdfContentViewController.h
+//  EXRPDFContentViewController.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/7/21.
@@ -8,15 +8,16 @@
 
 
 #import <UIKit/UIKit.h>
-#import "PdfMetadata.h"
-#import "PdfPageScrollView.h"
+#import "EXRPDFMetadata.h"
+#import "EXRPDFPageScrollView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfContentViewController: UIViewController
+@interface EXRPDFContentViewController: UIViewController
 
 @property (assign, nonatomic) CGPDFDocumentRef pdf;
 
+// Page number (accessed using unsignedLongValue). Dictates what page content to view
 @property (strong, nonatomic) NSNumber *pageNumber;
 
 @end

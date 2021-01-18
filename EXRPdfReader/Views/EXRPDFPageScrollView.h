@@ -1,5 +1,5 @@
 //
-//  PdfPageScrollView.h
+//  EXRPDFPageScrollView.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/12/21.
@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PdfMetadata.h"
-#import "PdfSinglePageView.h"
+#import "EXRPDFMetadata.h"
+#import "EXRPDFSinglePageView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfPageScrollView : UIScrollView <UIScrollViewDelegate>
+@interface EXRPDFPageScrollView : UIScrollView <UIScrollViewDelegate>
 
-@property (strong, nonatomic) PdfSinglePageView *pdfSinglePageView;
+@property (strong, nonatomic) EXRPDFSinglePageView *pdfSinglePageView;
 
 - (void)setPDFPage:(CGPDFPageRef)PDFPage;
 

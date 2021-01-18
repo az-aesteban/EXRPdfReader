@@ -1,16 +1,16 @@
 //
-//  PdfContentViewController.m
+//  EXRPDFContentViewController.m
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/7/21.
 //  Copyright © 2021 Arnold Joseph Caesar Esteban. All rights reserved.
 //
 
-#import "PdfContentViewController.h"
+#import "EXRPDFContentViewController.h"
 
-@interface PdfContentViewController ()
+@interface EXRPDFContentViewController ()
 
-@property (strong, nonatomic) IBOutlet PdfPageScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet EXRPDFPageScrollView *scrollView;
 
 @property (assign, nonatomic) CGPDFPageRef page;
 
@@ -18,14 +18,14 @@
 
 @end
 
-@implementation PdfContentViewController
+@implementation EXRPDFContentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Do any additional setup after loading the view, typically from a nib.
-    self.page = CGPDFDocumentGetPage(self.pdf, self.pageNumber.unsignedLongValue);
-    if (!self.page) {
+    self.page = CGPDFDocumentGetPage(self.pdf, (size_t) self.pageNumber.unsignedLongValue);
+    if (self.page) {
         CGPDFPageRetain(self.page);
     }
     [self.scrollView setPDFPage:self.page];
@@ -33,6 +33,12 @@
 
 - (void)viewDidLayoutSubviews {
     [self restoreScale];
+}
+
+- (void)dealloc {
+    if (!_page) {
+        CGPDFPageRelease(_page);
+    }
 }
 
 #pragma mark - Layout Methods

@@ -1,5 +1,5 @@
 //
-//  PdfTableViewController.h
+//  EXRPDFTableViewController.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 12/11/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfTableViewController : UITableViewController
+@interface EXRPDFTableViewController : UITableViewController
 
 @end
 

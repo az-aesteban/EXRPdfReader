@@ -8,11 +8,11 @@
 
 #import "SceneDelegate.h"
 #import "AppDelegate.h"
-#import "PdfTableViewController.h"
+#import "EXRPDFTableViewController.h"
 
 @interface SceneDelegate ()
 
-@property (strong, nonatomic) PdfTableViewController *pdfTableViewController;
+@property (strong, nonatomic) EXRPDFTableViewController *pdfTableViewController;
 
 @end
 
@@ -23,7 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.windowScene = (UIWindowScene *)scene;
 
-    self.pdfTableViewController = [[PdfTableViewController alloc] initWithNibName:@"PdfTableViewController"
+    self.pdfTableViewController = [[EXRPDFTableViewController alloc] initWithNibName:@"EXRPDFTableViewController"
                                                                            bundle:[NSBundle mainBundle]];
 
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.pdfTableViewController];

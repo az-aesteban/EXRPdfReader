@@ -1,26 +1,26 @@
 //
-//  PdfMetadata.m
+//  EXRPDFMetadata.m
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/7/21.
 //  Copyright © 2021 Arnold Joseph Caesar Esteban. All rights reserved.
 //
 
-#import "PdfMetadata.h"
+#import "EXRPDFMetadata.h"
 
-@implementation PdfMetadata
+@implementation EXRPDFMetadata
 
-- (instancetype)initFileWithName:(NSString *)fileName
+- (instancetype)initFileWithName:(NSString *)filename
                  fileDescription:(NSString *)fileDescription
                         filePath:(NSString *)filePath
                         sequence:(NSInteger)sequence
-                           pdfId:(NSString *)pdfId {
-    if (self = [[PdfMetadata alloc] init]) {
-        self.fileName = fileName;
-        self.fileDescription = fileDescription;
-        self.filePath = filePath;
-        self.sequence = sequence;
-        self.pdfId = pdfId;
+                           pdfID:(NSString *)pdfID {
+    if (self = [[EXRPDFMetadata alloc] init]) {
+        _filename = filename;
+        _fileDescription = fileDescription;
+        _filePath = filePath;
+        _sequence = sequence;
+        _pdfID = pdfID;
     }
     return self;
 }
@@ -31,8 +31,12 @@
                                                              ofType:nil];
     if (resourcePath) {
         NSURL *pdfURL = [NSURL fileURLWithPath:resourcePath];
-        NSError *err;
+        NSError *err = nil;
         exists = [pdfURL checkResourceIsReachableAndReturnError:&err];
+        if (err) {
+            NSAssert(NO, @"EXRPDFMetadata: Error encountered on checking file existence %@", err);
+            return NO;
+        }
     }
     return exists;
 }

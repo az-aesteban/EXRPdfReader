@@ -1,5 +1,5 @@
 //
-//  PdfSinglePageView.h
+//  EXRPDFRootViewController.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/13/21.
@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EXRPDFDataSource.h"
+#import "EXRPDFMetadata.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfSinglePageView : UIView
+@interface EXRPDFRootViewController : UIViewController
 
-@property CGPDFPageRef pdfPageRef;
-
-@property CGFloat viewScale;
-
-- (void)setPage:(CGPDFPageRef)newPage;
+- (instancetype)initWithFilePath:(NSString *)filePath;
 
 @end
 

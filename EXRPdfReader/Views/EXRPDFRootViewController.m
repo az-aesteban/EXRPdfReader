@@ -1,18 +1,18 @@
 //
-//  PdfRootViewController.m
+//  EXRPDFRootViewController.m
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/13/21.
 //  Copyright © 2021 Arnold Joseph Caesar Esteban. All rights reserved.
 //
 
-#import "PdfRootViewController.h"
-#import "PdfDataSource.h"
-#import "PdfContentViewController.h"
+#import "EXRPDFRootViewController.h"
+#import "EXRPDFDataSource.h"
+#import "EXRPDFContentViewController.h"
 
-@interface PdfRootViewController ()
+@interface EXRPDFRootViewController ()
 
-@property (strong, nonatomic) PdfDataSource *pdfDataSource;
+@property (strong, nonatomic) EXRPDFDataSource *pdfDataSource;
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
@@ -20,22 +20,22 @@
 
 @end
 
-@implementation PdfRootViewController
+@implementation EXRPDFRootViewController
 
 - (instancetype)initWithFilePath:(NSString *)filePath {
     if (self = [super init]) {
-        self.filePath = filePath;
+        _filePath = filePath;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pdfDataSource = [[PdfDataSource alloc] initWithFilePath:self.filePath];
+    self.pdfDataSource = [[EXRPDFDataSource alloc] initWithFilePath:self.filePath];
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                               navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                             options:nil];
-    PdfContentViewController *startingViewController = [self.pdfDataSource viewControllerAtIndex:0];
+    EXRPDFContentViewController *startingViewController = [self.pdfDataSource viewControllerAtIndex:0];
     [self.pageViewController setViewControllers:@[startingViewController]
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:NO
@@ -43,9 +43,6 @@
     self.pageViewController.dataSource = self.pdfDataSource;
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
-    CGRect pageViewRect = self.view.bounds;
-    self.pageViewController.view.frame = pageViewRect;
-    [self.pageViewController didMoveToParentViewController:self];
 }
 
 @end

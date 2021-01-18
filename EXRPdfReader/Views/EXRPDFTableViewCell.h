@@ -1,5 +1,5 @@
 //
-//  PdfTableViewCell.h
+//  EXRPDFTableViewCell.h
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/11/21.
@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PdfMetadata.h"
+#import "EXRPDFMetadata.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PdfTableViewCell : UITableViewCell
+@interface EXRPDFTableViewCell : UITableViewCell
 
-- (void)setupCellContentsWithName:(NSString *)fileName
+- (void)setupCellContentsWithName:(NSString *)filename
                   fileDescription:(NSString *)fileDescription;
 
 @end

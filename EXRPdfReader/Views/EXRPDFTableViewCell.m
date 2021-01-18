@@ -1,26 +1,26 @@
 //
-//  PdfTableViewCell.m
+//  EXRPDFTableViewCell.m
 //  EXRPdfReader
 //
 //  Created by Arnold Joseph Caesar Esteban on 1/11/21.
 //  Copyright © 2021 Arnold Joseph Caesar Esteban. All rights reserved.
 //
 
-#import "PdfTableViewCell.h"
+#import "EXRPDFTableViewCell.h"
 
-@interface PdfTableViewCell ()
+@interface EXRPDFTableViewCell ()
 
-@property (strong, nonatomic) IBOutlet UILabel *fileNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *filenameLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *fileDescriptionLabel;
 
 @end
 
-@implementation PdfTableViewCell
+@implementation EXRPDFTableViewCell
 
-- (void)setupCellContentsWithName:(NSString *)fileName
+- (void)setupCellContentsWithName:(NSString *)filename
                   fileDescription:(NSString *)fileDescription {
-    self.fileNameLabel.text = fileName;
+    self.filenameLabel.text = filename;
     self.fileDescriptionLabel.text = fileDescription;
 }
 
