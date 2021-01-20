@@ -43,6 +43,40 @@
     self.pageViewController.dataSource = self.pdfDataSource;
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
+    [self setupNavigationAnnotationOptions];
+}
+
+- (IBAction)didTapFreehandButton:(UIBarButtonItem*)buttonItem {
+    NSLog(@"EXRPDFRootViewController: Tapped Freehand button");
+    EXRPDFContentViewController *contentViewController = self.pageViewController.viewControllers[0];
+    if (contentViewController) {
+        contentViewController.scrollView.panGestureRecognizer.enabled = NO;
+        contentViewController.scrollView.pdfSinglePageView.editModeEnabled = YES;
+        self.pageViewController.dataSource = nil;
+    }
+}
+
+- (IBAction)didTapPanViewButton:(UIBarButtonItem*)buttonItem {
+    NSLog(@"EXRPDFRootViewController: Tapped Pan View button");
+    EXRPDFContentViewController *contentViewController = self.pageViewController.viewControllers[0];
+    if (contentViewController) {
+        contentViewController.scrollView.panGestureRecognizer.enabled = YES;
+        contentViewController.scrollView.pdfSinglePageView.editModeEnabled = NO;
+        self.pageViewController.dataSource = self.pdfDataSource;
+    }
+}
+
+- (void)setupNavigationAnnotationOptions {
+    UIBarButtonItem *panViewButton = [[UIBarButtonItem alloc] init];
+    panViewButton.title = @"Pan";
+    panViewButton.target = self;
+    panViewButton.action = @selector(didTapPanViewButton:);
+
+    UIBarButtonItem *freehandButton = [[UIBarButtonItem alloc] init];
+    freehandButton.title = @"Draw";
+    freehandButton.target = self;
+    freehandButton.action = @selector(didTapFreehandButton:);
+    self.navigationItem.rightBarButtonItems = @[panViewButton, freehandButton];
 }
 
 @end

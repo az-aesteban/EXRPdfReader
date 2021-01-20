@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) CGFloat viewScale;
 
+@property (assign, nonatomic) BOOL editModeEnabled;
+
 - (void)setPage:(CGPDFPageRef)newPage;
 
 @end

@@ -10,8 +10,6 @@
 
 @interface EXRPDFContentViewController ()
 
-@property (strong, nonatomic) IBOutlet EXRPDFPageScrollView *scrollView;
-
 @property (assign, nonatomic) CGPDFPageRef page;
 
 @property (assign, nonatomic) CGFloat viewScale;

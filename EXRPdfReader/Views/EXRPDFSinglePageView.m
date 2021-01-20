@@ -8,11 +8,20 @@
 
 #import "EXRPDFSinglePageView.h"
 
+@interface EXRPDFSinglePageView ()
+
+@property (nonatomic, strong) UIBezierPath *path;
+
+@end
+
 @implementation EXRPDFSinglePageView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
+        _path = UIBezierPath.bezierPath;
+        _editModeEnabled = NO;
     }
     return self;
 }
@@ -45,6 +54,29 @@
         // Draw the page, restore and exit
         CGContextDrawPDFPage(context, self.pdfPage);
         CGContextRestoreGState(context);
+
+        [self drawFreehandAnnotation];
+    }
+}
+
+- (void)drawFreehandAnnotation {
+    [self.path stroke];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.editModeEnabled) {
+        UITouch *touch = [touches anyObject];
+        CGPoint p = [touch locationInView:self];
+        [self.path moveToPoint:p];
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.editModeEnabled) {
+        UITouch *touch = touches.anyObject;
+        CGPoint p = [touch locationInView:self];
+        [self.path addLineToPoint:p];
+        [self setNeedsDisplay];
     }
 }
 

@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EXRPDFContentViewController: UIViewController
 
+@property (strong, nonatomic) IBOutlet EXRPDFPageScrollView *scrollView;
+
 @property (assign, nonatomic) CGPDFDocumentRef pdf;
 
 // Page number (accessed using unsignedLongValue). Dictates what page content to view
